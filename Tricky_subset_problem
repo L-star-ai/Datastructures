@@ -1,0 +1,65 @@
+/* Tricky Subset Problem
+
+N children are made to stand in a queue. Each of them is given a number A[i]. The teacher writes a number S on a page and passes it to the first child. Each child must add all the numbers they see on the page along with their own number, write the sum on the paper and pass it to the next person. 
+In the end, the teacher must determine if X can be formed by adding some of the numbers from the series of numbers written on the paper.
+Your task is to complete the function isPossible() which takes S, N, X and array A as input parameters and returns 1 if there is a subset which adds to this sum. Otherwise returns 0.
+
+*/
+
+
+
+import java.util.*;
+public class tricky {
+        public static void main(String[] args){
+            Scanner sc = new Scanner(System.in);
+            long S = sc.nextLong();
+            int N = sc.nextInt();
+            long X = sc.nextLong();
+            long[] A = new long[N];
+            for(int i=0;i<N;i++){
+                A[i]=sc.nextLong();
+            }
+            tricky bs = new tricky();
+            bs.isPossible(S,N,X,A);
+
+        }
+        static int isPossible(long S, int N, long X, long A[])
+        {
+            long[] B = new long[N+1];
+            long sum = S;
+            int count=0;
+            for(int i=0;i<(N+1);i++){
+                if(i==0){
+                    B[i]=S;
+                    System.out.println(B[i]);
+                }else {
+                    B[i] = sum + A[i-1];
+                    sum = sum + B[i];
+                    System.out.println(B[i]);
+                }
+
+                if(B[i]==X){
+                    count+=1;
+                }
+                else{
+                    for(int j=0;j<B.length;j++){
+                        if(i==j){
+
+                        }else{
+                            if((B[i]+B[j])==X){
+                                count+=1;
+                            }
+
+                        }
+                    }
+                }
+            }
+           
+            if(count>0){
+                System.out.println("y");
+            }else {
+                System.out.println("n");
+            }
+            return 0;
+        }
+    }
