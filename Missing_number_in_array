@@ -1,0 +1,64 @@
+Q)Given an array of size N-1 such that it only contains distinct integers in the range of 1 to N. Find the missing element.
+
+Input:
+N = 5
+A[] = {1,2,3,5}
+Output: 4
+
+Input:
+N = 10
+A[] = {6,1,2,8,3,4,7,10,5}
+Output: 9
+
+
+
+code 1 : 
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class missing_number_array {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<Integer> lst = new ArrayList<>(n-1);
+        for(int i=0;i<n-1;i++){
+            lst.add(sc.nextInt());
+        }
+        for(int j=1;j<=n;j++){
+            if(lst.contains(j)){
+                continue;
+            }else{
+                System.out.println(j);
+                break;
+            }
+        }
+    }
+}
+
+
+
+
+code 2:
+
+
+import java.util.Scanner;
+
+public class missing_number_array {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+         int sum =0;
+        int c=0;
+        int[] arr = new int[n-1];
+        for(int i=0;i< arr.length;i++){
+            arr[i]= sc.nextInt();
+            sum+=arr[i];
+        }
+        for(int i=1;i<=n;i++){
+            c+=i;
+        }
+        System.out.println(c-sum);
+    }
+}
+
